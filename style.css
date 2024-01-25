@@ -1,0 +1,116 @@
+body {
+    display: grid;
+    background-color: lightgrey;
+    align-items: center;
+}
+
+.organograma-container {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.tree {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.tree ul {
+    padding-top: 20px;
+    position: relative;
+    transition: .5s;
+}
+
+.tree li {
+    display: inline-table;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 10px;
+    transition: .5s;
+}
+
+.tree li:before, .tree li:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 1px solid #000000;
+    width: 51%;
+    height: 10px;
+}
+
+.tree li:after {
+    right: auto;
+    left: 50%;
+    border-left: 1px solid #000000;
+}
+
+.tree li:only-child:after, .tree li:only-child:before {
+    display: none;
+}
+
+.tree li:only-child {
+    padding-top: 0;
+}
+
+.tree li:first-child:before, .tree li:last-child:after {
+    border: 0 none;
+}
+
+.tree li:last-child:before {
+    border-right: 1px solid #000000;
+    border-radius: 0px 5px 0px 0px;
+}
+
+.tree li:first-child:after {
+    border-right: 1px solid #000000;
+    border-radius: 5px 0px 0px 0px;
+}
+
+.tree ul ul:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 1px solid #000000;
+    width: 0;
+    height: 20px;
+}
+
+.tree .card-container {
+    border: 1px solid #000000;
+    padding: 10px;
+    display: inline-grid;
+    border-radius: 5px;
+    text-decoration-line: none;
+    transition: .5s;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    background: white;
+    width: 260px;
+    height: 140px;
+    border-radius: 4px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user-name {
+    display: flex;
+    flex-direction: row;
+}
+
+img.profile-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
