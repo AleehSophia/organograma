@@ -1,116 +1,107 @@
-body {
-    display: grid;
-    background-color: lightgrey;
-    align-items: center;
+:root {
+    --organograma-padding: 40px;
+    --organograma-card-width: 120px;
+    --organograma-card-height: 60px;
+    --organograma-lines-thickness: 1px;
+    --organograma-lines-radius: 5px;
 }
 
-.organograma-container {
-    padding: 50px;
-    display: flex;
-    justify-content: center;
-}
-
-.tree {
-    width: 100%;
-    height: auto;
+.organograma {
     text-align: center;
 }
 
-.tree ul {
-    padding-top: 20px;
+div.organograma > ul {
+    padding: 0;
+}
+
+div.organograma > ul::before {
+    content: none;
+}
+
+div.organograma > ul > li {
+    padding: 0;
+}
+
+div.organograma > ul > li::before {
+    content: none !important;
+}
+
+div.organograma > ul > li::after {
+    content: none !important;
+}
+
+.organograma ul {
     position: relative;
-    transition: .5s;
-}
-
-.tree li {
-    display: inline-table;
-    text-align: center;
     list-style-type: none;
-    position: relative;
-    padding: 10px;
-    transition: .5s;
+    padding: var(--organograma-padding) 0 0 0;
+    margin: 0;
 }
 
-.tree li:before, .tree li:after {
-    content: '';
+.organograma ul::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: var(--organograma-padding);
+    border-left: var(--organograma-lines-thickness) black solid;
+    border-top-left-radius: var(--organograma-lines-radius);
+}
+
+.organograma li {
+    position: relative;
+    float: left;
+    text-align: center;
+    padding-top: var(--organograma-padding);
+}
+
+.organograma li:not(.last)::before {
+    content: "";
     position: absolute;
     top: 0;
     right: 50%;
-    border-top: 1px solid #000000;
-    width: 51%;
-    height: 10px;
+    height: var(--organograma-padding);
+    width: 50%;
 }
 
-.tree li:after {
-    right: auto;
-    left: 50%;
-    border-left: 1px solid #000000;
+.organograma li:first-child:nth-last-child(1):after {
+    border-top: 0;
+    border-radius: 0;
 }
 
-.tree li:only-child:after, .tree li:only-child:before {
-    display: none;
+.organograma li:not(:first-child)::before {
+    border-top: var(--organograma-lines-thickness) black solid;
 }
 
-.tree li:only-child {
-    padding-top: 0;
-}
-
-.tree li:first-child:before, .tree li:last-child:after {
-    border: 0 none;
-}
-
-.tree li:last-child:before {
-    border-right: 1px solid #000000;
-    border-radius: 0px 5px 0px 0px;
-}
-
-.tree li:first-child:after {
-    border-right: 1px solid #000000;
-    border-radius: 5px 0px 0px 0px;
-}
-
-.tree ul ul:before {
-    content: '';
+.organograma li:not(.last)::after {
+    content: "";
     position: absolute;
     top: 0;
     left: 50%;
-    border-left: 1px solid #000000;
-    width: 0;
-    height: 20px;
+    height: var(--organograma-padding);
+    width: 50%;
+    border-top: var(--organograma-lines-thickness) black solid;
+    border-left: var(--organograma-lines-thickness) black solid;
+    border-top-left-radius: var(--organograma-lines-radius);
 }
 
-.tree .card-container {
-    border: 1px solid #000000;
-    padding: 10px;
-    display: inline-grid;
+.organograma li.last::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: var(--organograma-padding);
+    width: 50%;
+    border-top: var(--organograma-lines-thickness) black solid;
+    border-right: var(--organograma-lines-thickness) black solid;
+    border-top-right-radius: var(--organograma-lines-radius);
+}
+
+.organograma .card {
+    width: var(--organograma-card-width);
+    min-height: var(--organograma-card-height);
+    display: inline-block;
+    border: 1px black solid;
     border-radius: 5px;
-    text-decoration-line: none;
-    transition: .5s;
-}
-
-.card-container {
-    display: flex;
-    justify-content: center;
-    background: white;
-    width: 260px;
-    height: 140px;
-    border-radius: 4px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
-
-.card-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.user-name {
-    display: flex;
-    flex-direction: row;
-}
-
-img.profile-photo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
 }
